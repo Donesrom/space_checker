@@ -11,3 +11,7 @@ disk_usage = get_disk_usage("/var/lib/data")
 # Print the disk usage to the console.
 print(f"Disk usage: {disk_usage}")
 
+port = int(os.getenv('PORT', 80))
+print('Listening on port %s' % (port))
+httpd = socketserver.TCPServer(('', port), Handler)
+httpd.serve_forever()
